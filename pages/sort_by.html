@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wazwez - To Do List</title>
+    <link rel="stylesheet" href="/style/sort_by.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">
+        <img src="/assets/Logo.svg" alt="Wazwez Logo" />
+      </a>
+      <div class="profile-section">
+        <div class="profile-container">
+          <div class="notification-icon"></div>
+          <div class="profile-wrapper">
+            <div class="profile-image">
+              <img src="/assets/profil.svg" alt="Profile" />
+            </div>
+            <span class="profile-name">Krozeo Jupiter</span>
+            <span class="dropdown-arrow">
+              <img src="/assets/icons/Arrow - Down 2.svg" alt="">
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+       <main class="main-container">
+      <div class="content-wrapper">
+        <div class="task-header">
+          <div class="left-header">
+          <div class="section-title">MY TASKS</div>
+          <h1 class="page-title">To Do List</h1>
+          <p class="subtitle">Buat list tugas harian saya</p>
+          </div>
+          <div class="right-header">
+           <button class="add-btn">
+            <img src="/assets/icons/Plus.svg" alt="">
+              <span>Tambah tugas</span> 
+            </button>
+            </div>
+        </div>
+
+        <div class="controls-section">
+          <div class="left-controls">
+            <label class="sort-label">Sort By</label>
+          </div>
+
+          <div class="right-controls">
+            <div class="dropdown-container">
+              <select class="sort-dropdown">
+                <option>By Tanggal</option>
+              </select>
+              <span class="dropdown-arrow-custom">
+                <img src="/assets/icons/Arrow - Up 2.svg" alt="">
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tasks-container">
+          <div class="task-item">
+            <div class="task-checkbox-wrapper">
+              <input type="checkbox" id="task-1" class="task-checkbox">
+              <label for="task-1" class="checkbox-custom"></label>
+            </div>
+            <div class="task-content">
+              <div class="task-title-row">
+                <div class="task-title">Product Design</div>
+                <div class="task-date today-badge">Hari ini</div>
+              </div>
+              <div class="task-description">Tugas untuk design team</div>
+            </div>
+            <div class="dropdown-container">
+              <div class="dropdown-menu">
+                <div class="dropdown-option">
+                  <input type="radio" name="sortOption" id="sort-tanggal" checked>
+                  <label for="sort-tanggal">By Tanggal</label>
+                </div>
+                <div class="dropdown-option">
+                  <input type="radio" name="sortOption" id="sort-time">
+                  <label for="sort-time">By Time</label>
+                </div>
+                <div class="dropdown-option">
+                  <input type="radio" name="sortOption" id="sort-terbaru">
+                  <label for="sort-terbaru">Terbaru</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="task-item">
+            <div class="task-checkbox-wrapper">
+              <input type="checkbox" id="task-2" class="task-checkbox">
+              <label for="task-2" class="checkbox-custom"></label>
+            </div>
+            <div class="task-content">
+              <div class="task-title-row">
+                <div class="task-title">Development</div>
+                <div class="task-date">15 Juni 2022</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-item">
+            <div class="task-checkbox-wrapper">
+              <input type="checkbox" id="task-3" class="task-checkbox">
+              <label for="task-3" class="checkbox-custom"></label>
+            </div>
+            <div class="task-content">
+              <div class="task-title-row">
+                <div class="task-title">Launching Wazwez Website</div>
+                <div class="task-date">20 Juni 2022</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="completed-section">
+          <div class="completed-toggle">
+            <span class="completed-arrow">
+              <img src="/assets/icons/Arrow - Right 2.svg" alt="">
+            </span>
+            <span>Terselesaikan</span>
+            <span class="completed-count">(3 tugas)</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  </body>
+</html>
