@@ -110,7 +110,7 @@ body {
 }
 .section-title {
   font-size: 13px;
-  color: #ff5f26;
+  color: #FF90BB;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -159,7 +159,7 @@ body {
 }
 
 .add-btn {
-  background-color: #ff5f26;
+  background-color: #FF90BB;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -174,7 +174,7 @@ body {
 }
 
 .add-btn:hover {
-  background-color: #e54e1f;
+  background-color: #FFC1DA;
 }
 
 .dropdown-container {
@@ -186,10 +186,10 @@ body {
 
 .sort-dropdown {
   background-color: white;
-  border: 2px solid #ff5f26;
+  border: 2px solid #FF90BB;
   border-radius: 24px;
   padding: 10px 40px 10px 18px;
-  color: #ff5f26;
+  color: #FF90BB;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -200,7 +200,7 @@ body {
 }
 
 .sort-dropdown:hover {
-  border-color: #e54e1f;
+  border-color: #FFC1DA;
 }
 
 .dropdown-arrow-custom {
@@ -208,7 +208,7 @@ body {
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: #ff5f26;
+  color: #FF90BB;
   pointer-events: none;
   font-size: 12px;
 }
@@ -254,8 +254,8 @@ body {
 }
 
 .task-checkbox:checked + .checkbox-custom {
-  background-color: #ff5f26;
-  border-color: #ff5f26;
+  background-color: #FF90BB;
+  border-color: #FF90BB;
 }
 
 .task-checkbox:checked + .checkbox-custom::after {
@@ -291,8 +291,8 @@ body {
 }
 
 .task-date {
-  background-color: #ffebd3;
-  color: #ff5f26;
+  background-color: #FF90BB;
+  color: white;
   padding: 4px 12px;
   border-radius: 16px;
   font-size: 12px;
@@ -304,7 +304,7 @@ body {
 }
 
 .task-date.today-badge {
-  background-color: #ffebd3;
+  background-color: #FF90BB;
 }
 
 .task-menu {
@@ -320,7 +320,7 @@ body {
 }
 
 .task-menu:hover {
-  color: #ff5f26;
+  color: #FF90BB;
 }
 
 .completed-section {
