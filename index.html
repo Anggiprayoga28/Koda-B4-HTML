@@ -4,124 +4,169 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wazwez - To Do List</title>
-    <link rel="stylesheet" href="/style/index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="main"></script>
+    <link rel="stylesheet" href="/assets/style/index.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#FF5F26',
+              'primary-light': '#ffc1da',
+              'primary-dark': '#e67ba3'
+            }
+          }
+        }
+      }
+    </script>
   </head>
-  <body>
-    <header class="header">
-      <a href="#" class="logo">
-        <img src="/assets/Logo.svg" alt="Wazwez Logo" />
+  <body class="bg-gray-50 text-gray-900 font-sans leading-relaxed">
+    <header class="flex justify-between items-center px-4 py-4 md:px-6">
+      <a href="#" class="flex items-center gap-2 text-xl font-bold text-primary no-underline">
+        <div>
+          <img src="/assets/images/Logo.svg" alt="logo">
+        </div>
       </a>
-      <div class="profile-section">
-        <div class="profile-container">
-          <div class="notification-icon"></div>
-          <div class="profile-wrapper">
-            <div class="profile-image">
-              <img src="/assets/profil.svg" alt="Profile" />
+      <div class="flex items-center relative">
+        <div class=" hidden md:block">
+          <img src="/assets/images/icons/Notification.svg" alt="Notification">
+        </div>
+        <div class="relative cursor-pointer" id="profileContainer">
+          <div class="flex items-center px-2 py-1 rounded-full transition-colors hover:bg-primary/10">
+            <div class="w-9 h-9 bg-gray-50 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">
+              <img src="/assets/images/profil.svg" alt="Profil">
             </div>
-            <span class="profile-name">Krozeo Jupiter</span>
-            <span class="dropdown-arrow">
-              <img src="/assets/icons/Arrow - Down 2.svg" alt="">
+            <span class="font-medium text-gray-900 mr-2 hidden md:block">Krozeo Jupiter</span>
+            <span class="text-gray-500 text-xs transition-transform duration-300" id="dropdownArrow">
+              <img src="/assets/images/icons/Arrow - Down 2.svg" alt="Arrow Down">
             </span>
+          </div>
+          <div class="absolute top-full right-0 mt-2 bg-white border border-gray-200 rounded-xl p-2 min-w-[200px] md:min-w-[250px] shadow-xl opacity-0 transform -translate-y-2 transition-all duration-300 z-50 hidden" id="profileDropdown">
+            <div class="px-4 py-3 border-b border-gray-100 mb-2">
+              <div class="font-semibold text-gray-900 mb-1">Krozeo Jupiter</div>
+              <div class="text-sm text-gray-500">krozeo.jupiter@email.com</div>
+            </div>
+            <div class="profile-dropdown-option flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-50 text-sm text-gray-900">
+              <span class="text-base w-5 h-5 flex items-center justify-center"></span>
+              <span>Profile Settings</span>
+            </div>
+            <div class="profile-dropdown-option flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-50 text-sm text-gray-900">
+              <span class="text-base w-5 h-5 flex items-center justify-center"></span>
+              <span>Account Settings</span>
+            </div>
+            <div class="profile-dropdown-option flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-50 text-sm text-gray-900">
+              <span class="text-base w-5 h-5 flex items-center justify-center"></span>
+              <span>Dark Mode</span>
+            </div>
+            <div class="h-px bg-gray-100 my-2"></div>
+            <div class="profile-dropdown-option flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors hover:bg-gray-50 text-sm text-gray-900">
+              <span class="text-base w-5 h-5 flex items-center justify-center"></span>
+              <span>Help & Support</span>
+            </div>
+            <div class="profile-dropdown-option logout flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition-colors text-sm text-red-600 hover:bg-red-50">
+              <span class="text-base w-5 h-5 flex items-center justify-center"></span>
+              <span>Logout</span>
+            </div>
           </div>
         </div>
       </div>
     </header>
 
-       <main class="main-container">
-      <div class="content-wrapper">
-        <div class="task-header">
-          <div class="left-header">
-          <div class="section-title">MY TASKS</div>
-          <h1 class="page-title">To Do List</h1>
-          <p class="subtitle">Buat list tugas harian saya</p>
+    <main class="max-w-4xl mx-auto px-4 py-10 md:px-6">
+      <div class="bg-white rounded-2xl p-6 md:p-8 max-w-3xl min-h-[700px]">
+        <div class="flex justify-between mb-3 flex-col md:flex-row items-stretch md:items-start gap-5">
+          <div class="order-1">
+            <div class="text-xs text-primary tracking-wider uppercase mb-1">MY TASKS</div>
+            <h1 class="text-3xl md:text-4xl text-gray-900 font-medium mb-2">To Do List</h1>
+            <p class="text-gray-500 text-base">Buat list tugas harian saya</p>
           </div>
-          <div class="right-header">
-           <button class="add-btn">
-            <img src="/assets/icons/Plus.svg" alt="">
-              <span>Tambah tugas</span> 
+          <div class="flex items-center order-2">
+            <button class="bg-primary text-white border-none px-5 py-3 rounded-3xl text-sm font-medium cursor-pointer flex items-center gap-2 transition-colors hover:bg-primary-light" id="addTaskBtn">
+              <span><img src="/assets/images/icons/Plus.svg" alt="Plus"></span>
+              <span>Tambah tugas</span>
             </button>
-            </div>
+          </div>
         </div>
 
-        <div class="controls-section">
-          <div class="left-controls">
-            <label class="sort-label">Sort By</label>
+        <div class="flex justify-between items-start mt-8 mb-8 flex-col md:flex-row gap-5">
+          <div class="flex flex-col gap-3 min-w-[150px] order-1">
+            <label class="mt-2 text-gray-600 text-base">Sort By</label>
           </div>
 
-          <div class="right-controls">
-            <div class="dropdown-container">
-              <select class="sort-dropdown">
-                <option>By Tanggal</option>
-              </select>
-              <span class="dropdown-arrow-custom">
-                <img src="/assets/icons/Arrow - Down-orange.svg" alt="">
+          <div class="flex flex-col items-end gap-3 min-w-[200px] mt-2 order-2 md:items-end items-stretch">
+            <div class="relative flex items-center min-w-[140px] w-full md:w-auto" id="sortDropdownContainer">
+              <button class="bg-white border-2 border-primary rounded-3xl px-5 py-2.5 pr-10 text-primary text-sm font-medium cursor-pointer outline-none appearance-none w-full transition-colors hover:border-primary-light" id="sortDropdown">
+                By Tanggal
+              </button>
+              <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-primary pointer-events-none text-xs transition-transform duration-300" id="sortArrow">
+                <img src="/assets/images/icons/Arrow - Down-orange.svg" alt="Arrow Down">
               </span>
+              <div class="absolute bg-white border border-gray-300 rounded-lg p-3 w-full md:w-[200%] mt-2.5 right-0 md:right-0 z-50 shadow-lg opacity-0 transform -translate-y-2 transition-all duration-300 hidden" id="sortDropdownMenu">
+                <div class="p-3 rounded-lg cursor-pointer transition-colors flex flex-row-reverse items-center gap-3 hover:bg-gray-50">
+                  <input type="radio" name="sortOption" id="sort-tanggal" checked class="radio-custom w-4 h-4 border border-gray-300 rounded-full appearance-none cursor-pointer relative transition-all m-0">
+                  <label for="sort-tanggal" class="text-gray-900 text-sm font-normal cursor-pointer flex-1">By Tanggal</label>
+                </div>
+                <div class="p-3 rounded-lg cursor-pointer transition-colors flex flex-row-reverse items-center gap-3 hover:bg-gray-50">
+                  <input type="radio" name="sortOption" id="sort-time" class="radio-custom w-4 h-4 border border-gray-300 rounded-full appearance-none cursor-pointer relative transition-all m-0">
+                  <label for="sort-time" class="text-gray-900 text-sm font-normal cursor-pointer flex-1">By Time</label>
+                </div>
+                <div class="p-3 rounded-lg cursor-pointer transition-colors flex flex-row-reverse items-center gap-3 hover:bg-gray-50">
+                  <input type="radio" name="sortOption" id="sort-terbaru" class="radio-custom w-4 h-4 border border-gray-300 rounded-full appearance-none cursor-pointer relative transition-all m-0">
+                  <label for="sort-terbaru" class="text-gray-900 text-sm font-normal cursor-pointer flex-1">Terbaru</label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="tasks-container">
-          <div class="task-item">
-            <div class="task-checkbox-wrapper">
-              <input type="checkbox" id="task-1" class="task-checkbox">
-              <label for="task-1" class="checkbox-custom"></label>
+        <div class="flex flex-col gap-2.5 mb-10" id="tasksContainer">
+          <div class="flex items-start p-5 -mx-6 md:-mx-8 mb-6 bg-gray-50 opacity-0 transform -translate-y-2 transition-all duration-300 hidden" id="taskInputForm">
+            <div class="flex items-center mr-4 mt-1">
+              <div class="w-5 h-5 border-2 border-gray-300 rounded-full flex items-center justify-center cursor-pointer transition-all"></div>
             </div>
-            <div class="task-content">
-              <div class="task-title-row">
-                <div class="task-title">Product Design</div>
-                <div class="task-date today-badge">Hari ini</div>
+            <div class="flex flex-col gap-3 flex-1 min-w-0 w-full">
+              <div class="w-full">
+                <input type="text" class="w-full border-none bg-transparent text-lg font-normal text-gray-800 outline-none p-0 m-0 placeholder-gray-500" id="taskNameInput" placeholder="Masukan nama tugas" />
               </div>
-              <div class="task-description">Tugas untuk design team</div>
-            </div>
-            <div class="task-menu">
-              <img src="/assets/icons/Arrow - Down 2.svg" alt="">
-            </div>
-          </div>
-
-          <div class="task-item">
-            <div class="task-checkbox-wrapper">
-              <input type="checkbox" id="task-2" class="task-checkbox">
-              <label for="task-2" class="checkbox-custom"></label>
-            </div>
-            <div class="task-content">
-              <div class="task-title-row">
-                <div class="task-title">Development</div>
-                <div class="task-date">15 Juni 2022</div>
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-2 text-gray-500 text-sm cursor-pointer transition-colors hover:text-gray-900" id="descriptionToggle">
+                  <span class="text-base w-5 h-5 flex items-center justify-center rounded">
+                    <img src="/assets/images/icons/menu.svg" alt="Menu">
+                  </span>
+                  <span class="font-normal" id="descriptionLabel">Deskripsi Tugas (Optional)</span>
+                  <input type="text" class="hidden border-none bg-transparent text-sm text-gray-500 outline-none flex-1 border-b border-gray-300 px-1 py-0.5" id="taskDescriptionInput" placeholder="Masukkan deskripsi..." />
+                </div>
+                <div class="flex items-center gap-2 text-gray-500 text-sm cursor-pointer transition-colors hover:text-gray-900" id="dateTimeToggle">
+                  <span class="text-base w-5 h-5 flex items-center justify-center rounded">
+                    <img src="/assets/images/icons/Calendar.svg" alt="Calendar">
+                  </span>
+                  <span class="font-normal" id="dateTimeLabel">Tanggal & Waktu</span>
+                  <input type="date" class="hidden border-none bg-transparent text-sm text-gray-500 outline-none border-b border-gray-300 px-1 py-0.5" id="taskDateInput" />
+                </div>
               </div>
             </div>
-            <div class="task-menu">
-              <img src="/assets/icons/Arrow - Down 2.svg" alt="">
-            </div>
-          </div>
-
-          <div class="task-item">
-            <div class="task-checkbox-wrapper">
-              <input type="checkbox" id="task-3" class="task-checkbox">
-              <label for="task-3" class="checkbox-custom"></label>
-            </div>
-            <div class="task-content">
-              <div class="task-title-row">
-                <div class="task-title">Launching Wazwez Website</div>
-                <div class="task-date">20 Juni 2022</div>
-              </div>
-            </div>
-            <div class="task-menu">
-              <img src="/assets/icons/Arrow - Down 2.svg" alt="">
+            <div class="text-gray-500 cursor-pointer w-6 h-6 flex items-center justify-center ml-4 mt-1 transition-transform">
+              <img src="/assets/images/icons/Arrow - Down 2.svg" alt="Arrow Down">
             </div>
           </div>
         </div>
 
-        <div class="completed-section">
-          <div class="completed-toggle">
-            <span class="completed-arrow">
-              <img src="/assets/icons/Arrow - Right 2.svg" alt="">
+        <div class="mt-72 pt-5 border-t border-gray-100">
+          <div class="cursor-pointer select-none text-gray-500 text-sm font-medium flex items-center gap-2 transition-colors mb-5 hover:text-gray-900" id="completedToggle">
+            <span class="text-xs transition-transform duration-300" id="completedArrow">
+              <img src="/assets/images/icons/Arrow - Right 2.svg" alt="Arrow right">
             </span>
             <span>Terselesaikan</span>
-            <span class="completed-count">(3 tugas)</span>
+            <span class="text-gray-500" id="completedCount">(0 tugas)</span>
+          </div>
+          
+          <div class="flex flex-col gap-3 opacity-0 transform -translate-y-2 transition-all duration-300 hidden" id="completedTasks">
           </div>
         </div>
       </div>
     </main>
-  </body>
   </body>
 </html>
