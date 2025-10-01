@@ -3,6 +3,21 @@
   text-orientation: mixed;
 }
 
+.checkbox-custom {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checkbox-custom:hover {
+  border-color: #ff5f26;
+  transform: scale(1.05);
+}
+
+.checkbox-custom:active {
+  transform: scale(0.95);
+}
+
 .checkbox-custom:after {
   content: url("/assets/images/icons/check.svg");
   color: white;
@@ -15,6 +30,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.checkbox-custom:focus {
+  outline: 2px solid #ff5f26;
+  outline-offset: 2px;
+}
+
+.subtask-checkbox-custom {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.subtask-checkbox-custom:hover {
+  border-color: #ff5f26;
+  transform: scale(1.1);
+}
+
+.subtask-checkbox-custom:active {
+  transform: scale(0.9);
 }
 
 .subtask-checkbox-custom:after {
@@ -31,11 +66,43 @@
   justify-content: center;
 }
 
+.subtask-checkbox-custom:focus {
+  outline: 2px solid #ff5f26;
+  outline-offset: 2px;
+}
+
+.completed-task-checkbox {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
 .completed-task-checkbox::after {
   content: url("/assets/images/icons/check.svg");
   color: white;
   font-weight: bold;
   font-size: 12px;
+}
+
+.completed-task-checkbox:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px rgba(255, 95, 38, 0.1);
+}
+
+.radio-custom {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.radio-custom:hover {
+  border-color: #ff5f26;
+  background-color: #fff5f0;
+}
+
+.radio-custom:focus {
+  outline: 2px solid #ff5f26;
+  outline-offset: 2px;
 }
 
 .radio-custom:checked {
@@ -53,6 +120,16 @@
   height: 8px;
   border-radius: 50%;
   background-color: #ff5f26;
+}
+
+.radio-custom:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.radio-custom:disabled:hover {
+  border-color: #d1d5db;
+  background-color: transparent;
 }
 
 .dropdown-active {
@@ -84,13 +161,163 @@
   transition: all 0.2s ease;
 }
 
+.inline-input:hover {
+  border-bottom-color: #9ca3af;
+}
+
 .inline-input:focus {
   border-bottom-color: #ff5f26;
   background-color: #fff;
   box-shadow: 0 1px 0 0 #ff5f26;
 }
 
+.inline-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-bottom-style: solid;
+}
+
 .inline-input::placeholder {
   color: #9ca3af;
   font-style: italic;
+}
+
+.inline-input:focus::placeholder {
+  color: #d1d5db;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:focus {
+  outline: 2px solid #ff5f26;
+  outline-offset: 2px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  opacity: 0.5;
+  transform: none;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+a:active {
+  opacity: 0.6;
+}
+
+a:visited {
+  color: inherit;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #ff5f26;
+}
+
+input[type="text"]:hover,
+input[type="date"]:hover,
+textarea:hover {
+  border-color: #9ca3af;
+}
+
+input[type="text"]:disabled,
+input[type="date"]:disabled,
+textarea:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.task-item:hover {
+  background-color: #f9fafb;
+}
+
+.dropdown-option:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown-option:active {
+  background-color: #e5e7eb;
+}
+
+.subtask-item:hover {
+  background-color: rgba(255, 95, 38, 0.05);
+}
+
+.subtask-delete:hover,
+.task-delete:hover {
+  color: #ff5f26;
+  background-color: rgba(255, 95, 38, 0.1);
+}
+
+.subtask-delete:active,
+.task-delete:active {
+  transform: scale(0.9);
+}
+
+.task-item:first-child {
+  padding-top: 0;
+}
+
+.task-item:last-child {
+  padding-bottom: 0;
+}
+
+.dropdown-option:first-child {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.dropdown-option:last-child {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.task-item:nth-child(even) {
+  background-color: rgba(249, 250, 251, 0.5);
+}
+
+.tasks-container:empty::before {
+  content: "Belum ada tugas. Tambahkan tugas baru!";
+  display: block;
+  text-align: center;
+  color: #9ca3af;
+  padding: 2rem;
+  font-style: italic;
+}
+
+.task-item:not(.completed) {
+  opacity: 1;
+}
+
+.task-item.completed {
+  opacity: 0.6;
+}
+
+form:focus-within {
+  box-shadow: 0 0 0 3px rgba(255, 95, 38, 0.1);
+}
+
+::selection {
+  background-color: #ff5f26;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #ff5f26;
+  color: white;
 }
